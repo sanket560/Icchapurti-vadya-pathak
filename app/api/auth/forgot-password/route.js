@@ -1,8 +1,12 @@
+import connectDB from "@/database/dbConfig";
 import { sendPasswordResetEmail } from "@/lib/auth/sendPasswordResetEmail";
 import User from "@/models/User.Model";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
+
+  await connectDB();
+
   const { email } = await request.json();
 
   const user = await User.findOne({ email });

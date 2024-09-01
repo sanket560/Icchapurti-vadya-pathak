@@ -2,6 +2,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import SuspenseBoundary from "./../../../components/SuspenseBoundary";
 
 const Page = () => {
   const [password, setPassword] = useState("");
@@ -86,4 +87,10 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default function ResetPasswordPage() {
+  return (
+    <SuspenseBoundary>
+      <Page />
+    </SuspenseBoundary>
+  );
+}
