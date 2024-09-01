@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-const page = () => {
+const Page = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -75,4 +75,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

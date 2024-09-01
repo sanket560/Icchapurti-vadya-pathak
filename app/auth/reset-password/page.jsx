@@ -3,7 +3,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const page = () => {
+const Page = () => {
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +13,7 @@ const page = () => {
   useEffect(() => {
     const resetToken = searchParams.get("token");
     setToken(resetToken);
-  }, []);
+  }, [searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,4 +86,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
