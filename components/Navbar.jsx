@@ -2,12 +2,13 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { FiUser } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { CgMenuRightAlt } from "react-icons/cg";
 import Link from "next/link";
 import { GlobalContext } from "@/context/GlobalContext.js";
 import { usePathname, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import { MdOutlineLogout } from "react-icons/md";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -25,6 +26,7 @@ const Navbar = () => {
     setUserInfo(false);
     Cookies.remove("token");
     localStorage.clear();
+    setOpen(false);
     router.push("/");
     toast.success("Logout! See You Soon");
   };
@@ -49,7 +51,7 @@ const Navbar = () => {
   return (
     <div className="shadow w-full fixed top-0 left-0">
       <div className="flex items-center h-16 justify-between bg-white py-2 md:py-0 md:px-10 px-4">
-        <div className="font-bold sm:text-xl md:text-2xl cursor-pointer flex items-center gap-1">
+        <div className="font-bold text-2xl cursor-pointer flex items-center gap-1">
           <Link href="/">
             <h1>इच्छापूर्ति वाद्य पथक</h1>
           </Link>
@@ -64,7 +66,7 @@ const Navbar = () => {
                 />
                 {open && (
                   <ul
-                    className={`absolute w-36 right-0 top-16 bg-white shadow-md py-2 z-10 rounded-md ${
+                    className={`absolute w-36 right-0 top-14 bg-white shadow-md py-2 z-10 rounded-md ${
                       open ? "block" : "hidden"
                     }`}
                   >
@@ -81,9 +83,9 @@ const Navbar = () => {
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="px-4 py-2 cursor-pointer text-red-600"
+                      className="px-4 flex justify-center items-center gap-2 py-2 cursor-pointer text-red-600"
                     >
-                      Logout
+                      Logout <MdOutlineLogout />
                     </button>
                   </ul>
                 )}
@@ -106,12 +108,12 @@ const Navbar = () => {
               {open ? (
                 <RxCross1 className="size-7" />
               ) : (
-                <RxHamburgerMenu className="size-7" />
+                <CgMenuRightAlt className="size-7" />
               )}
             </div>
             <ul
               className={`md:hidden md:items-center md:pb-0 py-3 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-[2rem] transition-all duration-100 ease-in ${
-                open ? "top-24" : "top-[-490px]"
+                open ? "top-16" : "top-[-490px]"
               }`}
             >
               <Link href="/auth/sign-in">
